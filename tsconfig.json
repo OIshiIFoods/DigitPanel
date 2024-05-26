@@ -1,0 +1,13 @@
+// ts 的主配置文件，编译时会读取该文件的配置
+{
+  "files": [],
+  // 细化不同环境下的 ts 配置
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    },
+    {
+      "path": "./tsconfig.app.json"
+    }
+  ]
+}

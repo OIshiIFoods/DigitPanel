@@ -1,0 +1,50 @@
+<template>
+  <div class="digit-panel">
+    <PanelHeader class="header" />
+    <main class="main">
+      <section class="column">
+        <PanelScore />
+        <PanelPeopleCount />
+        <PanelAge />
+      </section>
+      <section class="column">
+        <PanelNum />
+        <PanelMap />
+      </section>
+      <section class="column">
+        <PanelSkill />
+        <PanelPlayCount />
+        <PanelCountry />
+      </section>
+    </main>
+  </div>
+</template>
+
+<script setup lang="ts">
+import PanelHeader from '@/components/panel/PanelHeader.vue'
+import PanelNum from '@/components/panel/PanelNum.vue'
+import PanelMap from '@/components/panel/PanelMap.vue'
+import PanelScore from '@/components/panel/PanelScore.vue'
+import PanelPeopleCount from '@/components/panel/PanelPeopleCount.vue'
+import PanelAge from '@/components/panel/PanelAge.vue'
+import PanelSkill from '@/components/panel/PanelSkill.vue'
+import PanelPlayCount from '@/components/panel/PanelPlayCount.vue'
+import PanelCountry from '@/components/panel/PanelCountry.vue'
+</script>
+
+<style lang="stylus">
+.digit-panel
+  display flex
+  flex-direction column
+  width 100vw
+  height 100vh
+  & .header
+    height 10vh
+  & .main
+    flex 1
+    display flex
+    & .column
+      flex 3
+    & .column:nth-child(2)
+      flex 6
+</style>
