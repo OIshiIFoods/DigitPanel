@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h2 class="title">数字面板</h2>
+    <h1 class="title">数字面板</h1>
     <div class="time">
       <span>当前时间:{{ curTime }}</span>
     </div>

@@ -1,9 +1,13 @@
 <template>
-  <PanelItem>地区面板</PanelItem>
+  <PanelItem>
+
+  </PanelItem>
 </template>
 
 <script setup lang="ts">
 import PanelItem from '@/components/panel/PanelItem.vue'
 </script>
 
-<style></style>
+<style scoped lang="stylus">
+
+</style>

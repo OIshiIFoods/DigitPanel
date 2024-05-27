@@ -3,18 +3,18 @@
     <PanelHeader class="header" />
     <main class="main">
       <section class="column">
-        <PanelScore />
-        <PanelPeopleCount />
-        <PanelAge />
+        <PanelScore class="panel-item" />
+        <PanelPeopleCount class="panel-item"/>
+        <PanelAge class="panel-item"/>
       </section>
       <section class="column">
         <PanelNum />
-        <PanelMap />
+        <PanelMap class="panel-map"/>
       </section>
       <section class="column">
-        <PanelSkill />
-        <PanelPlayCount />
-        <PanelCountry />
+        <PanelSkill class="panel-item"/>
+        <PanelPlayCount class="panel-item" />
+        <PanelCountry class="panel-item"/>
       </section>
     </main>
   </div>
@@ -32,20 +32,29 @@ import PanelPlayCount from '@/components/panel/PanelPlayCount.vue'
 import PanelCountry from '@/components/panel/PanelCountry.vue'
 </script>
 
-<style lang="stylus">
+<style lang="stylus" scoped>
 .digit-panel
   display flex
   flex-direction column
+  overflow hidden
   width 100vw
   height 100vh
-  background: url('@/assets/images/bg.jpg') center/cover no-repeat
-  & .header
-    height 50px
-  & .main
+  background:#000 url('@/assets/images/bg.jpg') 0 0 /cover no-repeat
+  .header
+    height 80px
+  .main
     flex:1
     display flex
-    & .column
+    margin-top 10px
+    .column
       flex 3
-    & .column:nth-child(2)
+      display flex
+      flex-direction column
+      height 100%
+      .panel-item
+        flex 1
+    .column:nth-child(2)
       flex 6
+      & .panel-map
+        flex 1
 </style>
