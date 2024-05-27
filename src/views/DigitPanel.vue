@@ -38,10 +38,11 @@ import PanelCountry from '@/components/panel/PanelCountry.vue'
   flex-direction column
   width 100vw
   height 100vh
+  background: url('@/assets/images/bg.jpg') center/cover no-repeat
   & .header
-    height 10vh
+    height 50px
   & .main
-    flex 1
+    flex:1
     display flex
     & .column
       flex 3
