@@ -1,9 +1,9 @@
 export default {
     grid: {
-        top: 0,
-        left: 10,
-        right: 10,
-        bottom: 0,
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        top: '5%',
         containLabel: true
     },
     xAxis: {

@@ -42,7 +42,7 @@ onMounted(() => {
     text-align center
     line-height 40px
     color white
-    font-size 20px
+    font-size 15px
   .header::before,
   .header::after,
   .footer::before,

@@ -8,7 +8,7 @@
         </section>
         <section class="column">
           <PanelNum />
-          <PanelMap class="panel-map" />
+          <PanelMap class="panel-map" :config="panelMapConfig" />
         </section>
         <section class="column">
           <PanelItem v-for="[title, config] in rightData" :title="title" :config="config" class="panel-item" />
@@ -23,15 +23,15 @@ import PanelHeader from '@/components/panel/PanelHeader.vue';
 import PanelItem from '@/components/panel/PanelItem.vue';
 import PanelNum from '@/components/panel/PanelNum.vue';
 import PanelMap from '@/components/panel/PanelMap.vue';
-import { panelScoreConfig, panelSkillConfig } from '@/config/panels.config'
+import { panelScoreConfig, panelSkillConfig, panelPersonConfig, panelPlayConfig, panelAgeConfig, panelCountryConfig, panelMapConfig } from '@/config/panels.config'
 
 const panelsData = {
   '成绩面板': panelScoreConfig,
-  '人员变化面板': panelScoreConfig,
-  '年龄分布面板': panelScoreConfig,
+  '人员变化面板': panelPersonConfig,
+  '年龄分布面板': panelAgeConfig,
   '技能面板': panelSkillConfig,
-  '播放量面板': panelScoreConfig,
-  '地区分布面板': panelScoreConfig
+  '播放量面板': panelPlayConfig,
+  '地区分布面板': panelCountryConfig
 }
 
 const leftData = Object.entries(panelsData).slice(0, 3)
@@ -45,6 +45,7 @@ const rightData = Object.entries(panelsData).slice(3)
   min-width 1000px
   min-height 560px
 .digit-panel
+  overflow auto
   background:#000 url('@/assets/images/bg.jpg') 0 0 /100% 100% no-repeat
 .digit-panel-wrap
   display flex
@@ -58,7 +59,7 @@ const rightData = Object.entries(panelsData).slice(3)
     display flex
     margin-top 10px
     .column
-      flex 3
+      flex 4
       display flex
       flex-direction column
       height 100%

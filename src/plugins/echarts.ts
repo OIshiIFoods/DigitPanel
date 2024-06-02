@@ -1,16 +1,22 @@
 import * as ECharts from 'echarts/core';
-import type { App } from 'vue';
+import chinaMapJson from '@/assets/ts/china'
+import type { GeoJSONSourceInput } from 'echarts/types/src/coord/geo/geoTypes.js';
 
 import {
     BarChart,
-    LineChart
+    LineChart,
+    PieChart,
+    LinesChart,
+    EffectScatterChart
 } from 'echarts/charts';
 import {
     TitleComponent,
     TooltipComponent,
     GridComponent,
     DatasetComponent,
-    TransformComponent
+    TransformComponent,
+    LegendComponent,
+    GeoComponent
 } from 'echarts/components';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
@@ -26,7 +32,15 @@ ECharts.use([
     LineChart,
     LabelLayout,
     UniversalTransition,
-    CanvasRenderer
+    CanvasRenderer,
+    LegendComponent,
+    PieChart,
+    GeoComponent,
+    LinesChart,
+    EffectScatterChart
 ]);
+
+// 注册地图
+ECharts.registerMap('chinaMap', chinaMapJson as GeoJSONSourceInput)
 
 export default ECharts

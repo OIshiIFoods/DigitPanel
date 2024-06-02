@@ -1,9 +1,9 @@
 export default {
     grid: {
-        left: 10,
-        right: 10,
-        bottom: 20,
-        top: 20,
+        left: '3%',
+        right: '4%',
+        bottom: '3%',
+        top: '5%',
         containLabel: true
     },
     xAxis: {
@@ -61,9 +61,9 @@ export default {
         {
             data: [120, 141, 150, 80, 70, 92],
             type: 'bar',
-            barWidth: '50%',
+            barWidth: '30%',
             itemStyle: {
-                borderRadius: 8,
+                borderRadius: 4,
                 color: 'rgb(47, 137, 207)'
             },
             markLine: {
