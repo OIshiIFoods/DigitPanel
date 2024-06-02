@@ -1,6 +1,8 @@
 <template>
   <div class="panel">
-    <div class="header"></div>
+    <div class="header">
+      <slot name="header"></slot>
+    </div>
     <slot></slot>
     <div class="footer"></div>
   </div>
@@ -13,6 +15,9 @@
   position relative
   margin 0px 10px 10px
   background rgba(101, 132, 226, 0.1)
+  .header
+    color white
+    text-align center
   .header::before,
   .header::after,
   .footer::before,
