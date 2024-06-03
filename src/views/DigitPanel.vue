@@ -42,14 +42,14 @@ const rightData = Object.entries(panelsData).slice(3)
 .digit-panel,.digit-panel-wrap
   width 100vw
   height 100vh
-  min-width 1000px
-  min-height 560px
 .digit-panel
   overflow auto
   background:#000 url('@/assets/images/bg.jpg') 0 0 /100% 100% no-repeat
 .digit-panel-wrap
   display flex
   flex-direction column
+  min-width 1000px
+  min-height 560px
   max-width 2000px
   max-height 1000px
   .header
@@ -68,6 +68,7 @@ const rightData = Object.entries(panelsData).slice(3)
         overflow hidden
     .column:nth-child(2)
       flex 6
+      min-width 500px
       & .panel-map
         flex 1
         overflow hidden
