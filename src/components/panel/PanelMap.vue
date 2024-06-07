@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue';
 import type { Ref } from 'vue';
 import ECharts from '@/plugins/echarts'
 import type { ECBasicOption } from 'echarts/types/src/util/types.js';
@@ -18,11 +18,23 @@ const propsData = defineProps(['config'])
 let panelContainer: Ref<HTMLElement | undefined> = ref()
 let echart: ECharts.ECharts
 let option: ECBasicOption = propsData.config
+let resizeChart = () => { }
 
 onMounted(() => {
-  echart = ECharts.init(panelContainer.value)
-  echart.setOption(option)
-  window.addEventListener('resize', () => echart.resize())
+  nextTick(() => {
+    echart = ECharts.init(panelContainer.value)
+    echart.setOption(option)
+
+    // 注册重绘事件
+    resizeChart = () => echart.resize()
+    window.addEventListener('resize', resizeChart)
+  })
+})
+
+// 取消重绘事件
+onBeforeUnmount(() => {
+  console.log('取消重绘')
+  window.removeEventListener('resize', resizeChart)
 })
 </script>
 

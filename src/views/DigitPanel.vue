@@ -19,7 +19,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { onBeforeUnmount, onMounted, ref } from 'vue';
 import PanelHeader from '@/components/panel/PanelHeader.vue';
 import PanelItem from '@/components/panel/PanelItem.vue';
 import PanelNum from '@/components/panel/PanelNum.vue';
@@ -40,11 +40,6 @@ const rightData = Object.entries(panelsData).slice(3)
 const digitPanelContainer = ref<HTMLElement>()
 const [designedWidth, designedHeight] = [1920, 1080]
 
-onMounted(() => {
-  setScale()
-  window.addEventListener('resize', setScale)
-})
-
 const getScale = () => {
   let [ww, wh] = [window.innerWidth / designedWidth, window.innerHeight / designedHeight]
   return ww < wh ? ww : wh
@@ -58,6 +53,15 @@ const setScale = () => {
   digitPanelContainer.value.style.height = designedHeight + 'px'
   digitPanelContainer.value.style.transform = `scale(${getScale()})`;
 }
+
+onMounted(() => {
+  setScale()
+  window.addEventListener('resize', setScale)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', setScale)
+})
 
 </script>
 
