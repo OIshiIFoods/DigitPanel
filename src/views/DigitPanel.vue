@@ -1,6 +1,6 @@
 <template>
   <div class="digit-panel">
-    <div class="digit-panel-wrap">
+    <div class="digit-panel-wrap" ref="digitPanelContainer">
       <PanelHeader class="header" />
       <main class="main">
         <section class="column">
@@ -19,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import { onMounted, ref } from 'vue';
 import PanelHeader from '@/components/panel/PanelHeader.vue';
 import PanelItem from '@/components/panel/PanelItem.vue';
 import PanelNum from '@/components/panel/PanelNum.vue';
@@ -36,6 +37,28 @@ const panelsData = {
 
 const leftData = Object.entries(panelsData).slice(0, 3)
 const rightData = Object.entries(panelsData).slice(3)
+const digitPanelContainer = ref<HTMLElement>()
+const [designedWidth, designedHeight] = [1920, 1080]
+
+onMounted(() => {
+  setScale()
+  window.addEventListener('resize', setScale)
+})
+
+const getScale = () => {
+  let [ww, wh] = [window.innerWidth / designedWidth, window.innerHeight / designedHeight]
+  return ww < wh ? ww : wh
+}
+
+const setScale = () => {
+  if (!digitPanelContainer.value) {
+    return
+  }
+  digitPanelContainer.value.style.width = designedWidth + 'px'
+  digitPanelContainer.value.style.height = designedHeight + 'px'
+  digitPanelContainer.value.style.transform = `scale(${getScale()})`;
+}
+
 </script>
 
 <style lang="stylus" scoped>
@@ -43,15 +66,14 @@ const rightData = Object.entries(panelsData).slice(3)
   width 100vw
   height 100vh
 .digit-panel
-  overflow auto
+  display flex 
+  justify-content center
+  align-items center
+  overflow hidden
   background:#000 url('@/assets/images/bg.jpg') 0 0 /100% 100% no-repeat
 .digit-panel-wrap
   display flex
   flex-direction column
-  min-width 1000px
-  min-height 560px
-  max-width 2000px
-  max-height 1000px
   .header
     height 80px
   .main
@@ -59,7 +81,7 @@ const rightData = Object.entries(panelsData).slice(3)
     display flex
     margin-top 10px
     .column
-      flex 4
+      width 550px
       display flex
       flex-direction column
       height 100%
@@ -67,8 +89,7 @@ const rightData = Object.entries(panelsData).slice(3)
         flex 1
         overflow hidden
     .column:nth-child(2)
-      flex 6
-      min-width 500px
+      width 820px
       & .panel-map
         flex 1
         overflow hidden
