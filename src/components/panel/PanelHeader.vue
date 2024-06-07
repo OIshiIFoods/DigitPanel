@@ -8,15 +8,17 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, onBeforeUnmount } from 'vue';
 
 import { dateFormat } from '@/utils/DateTools';
 let timeFormat = 'yyyy年MM月dd日-hh时mm分ss秒'
 let curTime = ref(dateFormat(timeFormat))
-setInterval(()=>{
+const timer = setInterval(() => {
   curTime.value = dateFormat(timeFormat)
-},1000)
-
+}, 1000)
+onBeforeUnmount(() => {
+  clearInterval(timer)
+})
 </script>
 
 <style lang="stylus" scoped>
